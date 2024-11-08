@@ -52,12 +52,22 @@
 			);
 			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
 		};
+		0AE77FC72CDE0F6A007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CustomItemView.swift,
+				CustomTabBar.swift,
+				CustomTabItem.swift,
+				TabBarController.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0AE77F9C2CDE08D9007C11D1 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA52CDE0996007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		0AE77F9D2CDE08DF007C11D1 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA22CDE0975007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
-		0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CustomTabBar; sourceTree = "<group>"; };
+		0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FC72CDE0F6A007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CustomTabBar; sourceTree = "<group>"; };
 		0AE77F9F2CDE08EA007C11D1 /* Controler */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Controler; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
