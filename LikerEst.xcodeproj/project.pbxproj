@@ -58,6 +58,16 @@
 			);
 			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
 		};
+		0AE77FEB2CDE12BA007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Location.swift,
+				Photo.swift,
+				URLs.swift,
+				User.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -65,6 +75,7 @@
 		0AE77F9D2CDE08DF007C11D1 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA22CDE0975007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FC72CDE0F6A007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CustomTabBar; sourceTree = "<group>"; };
 		0AE77F9F2CDE08EA007C11D1 /* Controler */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Controler; sourceTree = "<group>"; };
+		0AE77FE82CDE1294007C11D1 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FEB2CDE12BA007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +113,7 @@
 			children = (
 				0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */,
 				0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */,
+				0AE77FE82CDE1294007C11D1 /* Model */,
 				0AE77F9F2CDE08EA007C11D1 /* Controler */,
 				0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */,
 				0AE77F9D2CDE08DF007C11D1 /* Resources */,
