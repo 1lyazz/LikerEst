@@ -10,8 +10,6 @@
 		07A8E79E9734718B5FB0AB70 /* Pods_LikerEst.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CFF84464AAB78D037C8DB0 /* Pods_LikerEst.framework */; };
 		0AE77F592CDE03CA007C11D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */; };
 		0AE77F5B2CDE03CA007C11D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */; };
-		0AE77F602CDE03CA007C11D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0AE77F5F2CDE03CA007C11D1 /* Base */; };
-		0AE77F652CDE03CC007C11D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0AE77F642CDE03CC007C11D1 /* Base */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,8 +17,6 @@
 		0AE77F552CDE03CA007C11D1 /* LikerEst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikerEst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AE77F5F2CDE03CA007C11D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AE77F642CDE03CC007C11D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AE77F662CDE03CC007C11D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F4FD1D4944BC4AFA8F2781C /* Pods-LikerEst.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikerEst.debug.xcconfig"; path = "Target Support Files/Pods-LikerEst/Pods-LikerEst.debug.xcconfig"; sourceTree = "<group>"; };
 		D7BFCA770BFD2C929DF0A1FC /* Pods-LikerEst.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikerEst.release.xcconfig"; path = "Target Support Files/Pods-LikerEst/Pods-LikerEst.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,8 +106,6 @@
 				0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */,
 				0AE77F9D2CDE08DF007C11D1 /* Resources */,
 				0AE77F9C2CDE08D9007C11D1 /* Helpers */,
-				0AE77F5E2CDE03CA007C11D1 /* Main.storyboard */,
-				0AE77F632CDE03CC007C11D1 /* LaunchScreen.storyboard */,
 				0AE77F662CDE03CC007C11D1 /* Info.plist */,
 			);
 			path = LikerEst;
@@ -194,8 +188,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AE77F652CDE03CC007C11D1 /* Base in Resources */,
-				0AE77F602CDE03CA007C11D1 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,25 +246,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0AE77F5E2CDE03CA007C11D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AE77F5F2CDE03CA007C11D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0AE77F632CDE03CC007C11D1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AE77F642CDE03CC007C11D1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0AE77F672CDE03CC007C11D1 /* Debug */ = {
@@ -410,7 +383,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -448,7 +420,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
