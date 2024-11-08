@@ -40,6 +40,15 @@
 				Extensions/UILabelExtension.swift,
 				Extensions/UIStackViewExtension.swift,
 				Extensions/UIViewExtension.swift,
+				Protocols/BaceVCProtocol.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FavouritesVC.swift,
+				HomeVC.swift,
 			);
 			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
 		};
@@ -49,7 +58,7 @@
 		0AE77F9C2CDE08D9007C11D1 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA52CDE0996007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
 		0AE77F9D2CDE08DF007C11D1 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA22CDE0975007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 		0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CustomTabBar; sourceTree = "<group>"; };
-		0AE77F9F2CDE08EA007C11D1 /* Controler */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Controler; sourceTree = "<group>"; };
+		0AE77F9F2CDE08EA007C11D1 /* Controler */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Controler; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2D298QL4HC;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LikerEst/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LikerEst;
@@ -421,6 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2D298QL4HC;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LikerEst/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = LikerEst;
