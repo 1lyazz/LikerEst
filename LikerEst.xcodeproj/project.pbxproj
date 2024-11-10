@@ -3,34 +3,100 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07A8E79E9734718B5FB0AB70 /* Pods_LikerEst.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08CFF84464AAB78D037C8DB0 /* Pods_LikerEst.framework */; };
 		0AE77F592CDE03CA007C11D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */; };
 		0AE77F5B2CDE03CA007C11D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */; };
-		0AE77F5D2CDE03CA007C11D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE77F5C2CDE03CA007C11D1 /* ViewController.swift */; };
-		0AE77F602CDE03CA007C11D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0AE77F5F2CDE03CA007C11D1 /* Base */; };
-		0AE77F622CDE03CC007C11D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AE77F612CDE03CC007C11D1 /* Assets.xcassets */; };
-		0AE77F652CDE03CC007C11D1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0AE77F642CDE03CC007C11D1 /* Base */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08CFF84464AAB78D037C8DB0 /* Pods_LikerEst.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikerEst.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE77F552CDE03CA007C11D1 /* LikerEst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikerEst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AE77F5C2CDE03CA007C11D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0AE77F5F2CDE03CA007C11D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AE77F612CDE03CC007C11D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0AE77F642CDE03CC007C11D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AE77F662CDE03CC007C11D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F4FD1D4944BC4AFA8F2781C /* Pods-LikerEst.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikerEst.debug.xcconfig"; path = "Target Support Files/Pods-LikerEst/Pods-LikerEst.debug.xcconfig"; sourceTree = "<group>"; };
+		D7BFCA770BFD2C929DF0A1FC /* Pods-LikerEst.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LikerEst.release.xcconfig"; path = "Target Support Files/Pods-LikerEst/Pods-LikerEst.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0AE77FA22CDE0975007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FA52CDE0996007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Extensions/UIAlertCExtension.swift,
+				Extensions/UILabelExtension.swift,
+				Extensions/UIStackViewExtension.swift,
+				Extensions/UIViewExtension.swift,
+				Protocols/BaceVCProtocol.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Cells/PhotoCell.swift,
+				FavouritesVC.swift,
+				HomeVC.swift,
+				PhotoDetailsVC.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FC72CDE0F6A007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CustomItemView.swift,
+				CustomTabBar.swift,
+				CustomTabItem.swift,
+				TabBarController.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FEB2CDE12BA007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Location.swift,
+				Photo.swift,
+				PhotoSearchResult.swift,
+				ProfileImage.swift,
+				URLs.swift,
+				User.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+		0AE77FF62CDE14D3007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				UnsplashService.swift,
+			);
+			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0AE77F9C2CDE08D9007C11D1 /* Helpers */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA52CDE0996007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Helpers; sourceTree = "<group>"; };
+		0AE77F9D2CDE08DF007C11D1 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FA22CDE0975007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+		0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FC72CDE0F6A007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = CustomTabBar; sourceTree = "<group>"; };
+		0AE77F9F2CDE08EA007C11D1 /* View */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FAF2CDE0B0C007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = View; sourceTree = "<group>"; };
+		0AE77FE82CDE1294007C11D1 /* Model */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FEB2CDE12BA007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Model; sourceTree = "<group>"; };
+		0AE77FF32CDE14A3007C11D1 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0AE77FF62CDE14D3007C11D1 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0AE77F522CDE03CA007C11D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A8E79E9734718B5FB0AB70 /* Pods_LikerEst.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +108,8 @@
 			children = (
 				0AE77F572CDE03CA007C11D1 /* LikerEst */,
 				0AE77F562CDE03CA007C11D1 /* Products */,
+				ECAD6C3BD97465029C4433A6 /* Pods */,
+				6C27BA516C27ECB8A7DA3F13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +126,32 @@
 			children = (
 				0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */,
 				0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */,
-				0AE77F5C2CDE03CA007C11D1 /* ViewController.swift */,
-				0AE77F5E2CDE03CA007C11D1 /* Main.storyboard */,
-				0AE77F612CDE03CC007C11D1 /* Assets.xcassets */,
-				0AE77F632CDE03CC007C11D1 /* LaunchScreen.storyboard */,
+				0AE77FE82CDE1294007C11D1 /* Model */,
+				0AE77F9F2CDE08EA007C11D1 /* View */,
+				0AE77F9E2CDE08E1007C11D1 /* CustomTabBar */,
+				0AE77FF32CDE14A3007C11D1 /* Services */,
+				0AE77F9D2CDE08DF007C11D1 /* Resources */,
+				0AE77F9C2CDE08D9007C11D1 /* Helpers */,
 				0AE77F662CDE03CC007C11D1 /* Info.plist */,
 			);
 			path = LikerEst;
+			sourceTree = "<group>";
+		};
+		6C27BA516C27ECB8A7DA3F13 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08CFF84464AAB78D037C8DB0 /* Pods_LikerEst.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECAD6C3BD97465029C4433A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F4FD1D4944BC4AFA8F2781C /* Pods-LikerEst.debug.xcconfig */,
+				D7BFCA770BFD2C929DF0A1FC /* Pods-LikerEst.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AE77F692CDE03CC007C11D1 /* Build configuration list for PBXNativeTarget "LikerEst" */;
 			buildPhases = (
+				BDB7536107F1CD89D7529F10 /* [CP] Check Pods Manifest.lock */,
 				0AE77F512CDE03CA007C11D1 /* Sources */,
 				0AE77F522CDE03CA007C11D1 /* Frameworks */,
 				0AE77F532CDE03CA007C11D1 /* Resources */,
+				F83590339DCDCBDE7CB50CC8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,45 +214,64 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AE77F622CDE03CC007C11D1 /* Assets.xcassets in Resources */,
-				0AE77F652CDE03CC007C11D1 /* Base in Resources */,
-				0AE77F602CDE03CA007C11D1 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BDB7536107F1CD89D7529F10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LikerEst-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F83590339DCDCBDE7CB50CC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikerEst/Pods-LikerEst-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LikerEst/Pods-LikerEst-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LikerEst/Pods-LikerEst-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0AE77F512CDE03CA007C11D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AE77F5D2CDE03CA007C11D1 /* ViewController.swift in Sources */,
 				0AE77F592CDE03CA007C11D1 /* AppDelegate.swift in Sources */,
 				0AE77F5B2CDE03CA007C11D1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0AE77F5E2CDE03CA007C11D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AE77F5F2CDE03CA007C11D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0AE77F632CDE03CC007C11D1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AE77F642CDE03CC007C11D1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0AE77F672CDE03CC007C11D1 /* Debug */ = {
@@ -287,19 +395,24 @@
 		};
 		0AE77F6A2CDE03CC007C11D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F4FD1D4944BC4AFA8F2781C /* Pods-LikerEst.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2D298QL4HC;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LikerEst/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LikerEst;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,27 +420,36 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gmail-zablotski.LikerEst";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		0AE77F6B2CDE03CC007C11D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7BFCA770BFD2C929DF0A1FC /* Pods-LikerEst.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2D298QL4HC;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LikerEst/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LikerEst;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,9 +457,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "gmail-zablotski.LikerEst";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
