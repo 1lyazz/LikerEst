@@ -36,4 +36,8 @@ extension FavouritesVC: BaseVCProtocol {
     func setupProperties() {
         view.backgroundColor = #colorLiteral(red: 0.9517185092, green: 0.6961403489, blue: 0.6050165892, alpha: 1)
     }
+
+    func bind() {
+        print("Hello World!")
+    }
 }
