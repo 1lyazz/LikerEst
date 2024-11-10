@@ -14,4 +14,6 @@ protocol BaseVCProtocol {
     func makeConstraints()
     // Set up layout attributes such as titles, images using this method
     func setupProperties()
+    // Binding, event handler
+    func bind()
 }
