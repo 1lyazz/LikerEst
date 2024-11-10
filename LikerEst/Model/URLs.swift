@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct URLs: Decodable {
+struct PhotoURLs: Decodable {
     let thumb: String
     let full: String
 }

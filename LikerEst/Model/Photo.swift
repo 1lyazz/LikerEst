@@ -9,9 +9,26 @@ import Foundation
 
 struct Photo: Decodable {
     let id: String
-    let created_at: String
+    let altDescription: String?
+    let urls: PhotoURLs
     let user: User
-    let urls: URLs
-    let downloads: Int
+    let likes: Int
+    let width: Int
+    let height: Int
+    let createdAt: String
     let location: Location?
+    let downloads: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case altDescription = "alt_description"
+        case urls
+        case user
+        case likes
+        case width
+        case height
+        case createdAt = "created_at"
+        case location
+        case downloads
+    }
 }
