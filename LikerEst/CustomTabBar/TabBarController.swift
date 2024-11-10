@@ -47,9 +47,10 @@ final class TabBarController: UITabBarController {
     private func makeConstraints() {
         customTabBar.anchor(
             left: view.safeAreaLayoutGuide.leftAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            bottom: view.bottomAnchor,
             right: view.safeAreaLayoutGuide.rightAnchor,
             paddingLeft: 24,
+            paddingBottom: 24,
             paddingRight: 24,
             height: 80
         )
