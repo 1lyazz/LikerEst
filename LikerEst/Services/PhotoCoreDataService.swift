@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-class PhotoCoreDataService {
+final class PhotoCoreDataService {
     static let shared = PhotoCoreDataService()
     
     // Saves photo to Core Data

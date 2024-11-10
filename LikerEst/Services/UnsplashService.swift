@@ -7,8 +7,8 @@
 
 import Alamofire
 
-class UnsplashService {
-    private let accessKey = "yP-tHfgaG3oSXXPlcOUApwXzTVFhszE8PZIenjePuzg"
+final class UnsplashService {
+    private let accessKey = "63BzS4PNefl8F0J7_SMGRvG4tzw0pjGuzLc7K3DIsYs"
     private let baseURL = "https://api.unsplash.com"
     private let randomPhotosEndpoint = "/photos/random"
     private let searchPhotosEndpoint = "/search/photos"
