@@ -8,9 +8,9 @@
 import UIKit
 
 extension UILabel {
-    func configureWith(_ text: String,
+    func configureWith(_ text: String?,
                        color: UIColor,
-                       alignment: NSTextAlignment,
+                       alignment: NSTextAlignment = .left,
                        size: CGFloat,
                        weight: UIFont.Weight = .regular)
     {
