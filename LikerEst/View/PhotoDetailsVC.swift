@@ -93,7 +93,6 @@ final class PhotoDetailsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupView()
         makeConstraints()
         setupProperties()
@@ -159,6 +158,8 @@ extension PhotoDetailsVC: BaseVCProtocol {
             activityIndicator.startAnimating()
             loadImage()
         }
+
+        updateHeartButtonState()
     }
 
     func bind() {
@@ -240,5 +241,22 @@ private extension PhotoDetailsVC {
         let isLiked = heartButton.tintColor == .red
         heartButton.setImage(UIImage(systemName: isLiked ? "heart" : "heart.fill"), for: .normal)
         heartButton.tintColor = isLiked ? .label : .red
+
+        if isLiked {
+            PhotoCoreDataService.shared.removePhoto(photo)
+        } else {
+            PhotoCoreDataService.shared.savePhoto(photo)
+        }
+    }
+    
+    // Update heart state button by checking isPhotoLiked
+    private func updateHeartButtonState() {
+        if PhotoCoreDataService.shared.isPhotoLiked(photo) {
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartButton.tintColor = .red
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            heartButton.tintColor = .label
+        }
     }
 }
