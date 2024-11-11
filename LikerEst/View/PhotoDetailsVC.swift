@@ -11,6 +11,7 @@ import UIKit
 final class PhotoDetailsVC: UIViewController {
     private let photo: Photo
     private var isImageLoaded: Bool = false
+    weak var delegate: PhotoDetailsVCDelegate?
 
     // MARK: - UI Elements
 
@@ -98,6 +99,11 @@ final class PhotoDetailsVC: UIViewController {
         setupProperties()
         bind()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.photoDetailsVCDidDismiss()
+    }
 }
 
 // MARK: - BaseVCProtocol
@@ -162,7 +168,7 @@ extension PhotoDetailsVC: BaseVCProtocol {
         updateHeartButtonState()
     }
 
-    func bind() {
+    private func bind() {
         closeButton.addAction(UIAction(handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         }), for: .touchUpInside)
@@ -248,7 +254,7 @@ private extension PhotoDetailsVC {
             PhotoCoreDataService.shared.savePhoto(photo)
         }
     }
-    
+
     // Update heart state button by checking isPhotoLiked
     private func updateHeartButtonState() {
         if PhotoCoreDataService.shared.isPhotoLiked(photo) {
