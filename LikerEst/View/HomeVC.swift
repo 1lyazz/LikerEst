@@ -5,9 +5,7 @@
 //  Created by Ilya Zablotski on 8.11.24.
 //
 
-import RxCocoa
 import RxSwift
-import SDWebImage
 import UIKit
 
 final class HomeVC: UIViewController {
@@ -42,11 +40,9 @@ final class HomeVC: UIViewController {
         return searchBar
     }()
 
-    private lazy var homeLabel: UILabel = {
+    private lazy var homeTitle: UILabel = {
         let label = UILabel()
-        label.text = "Home"
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-        label.textAlignment = .center
+        label.configureWith("Home", color: .label, alignment: .center, size: 34, weight: .bold)
         return label
     }()
 
@@ -57,7 +53,6 @@ final class HomeVC: UIViewController {
         setupView()
         makeConstraints()
         setupProperties()
-        fetchRandomPhotos()
         bind()
     }
 }
@@ -66,18 +61,14 @@ final class HomeVC: UIViewController {
 
 extension HomeVC: BaseVCProtocol {
     func setupView() {
-        view.addSubviews(homeLabel, searchBar, photoCollection)
+        view.addSubviews(homeTitle, searchBar, photoCollection)
     }
 
     func makeConstraints() {
-        homeLabel.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        searchBar.anchor(top: view.topAnchor,
                          left: view.leftAnchor,
                          right: view.rightAnchor,
-                         height: 44)
-
-        searchBar.anchor(top: homeLabel.bottomAnchor,
-                         left: view.leftAnchor,
-                         right: view.rightAnchor,
+                         paddingTop: 100,
                          paddingLeft: 16,
                          paddingRight: 16,
                          height: 44)
@@ -91,12 +82,13 @@ extension HomeVC: BaseVCProtocol {
 
     func setupProperties() {
         view.backgroundColor = .systemBackground
+        navigationItem.titleView = homeTitle
 
-        // Hiding the keyboard by tapping the screen
+        fetchRandomPhotos()
         setupGestureRecognizers()
     }
 
-    func bind() {
+    private func bind() {
         refreshControl.addAction(UIAction { [weak self] _ in
             self?.refreshPhotos()
         }, for: .valueChanged)
@@ -112,6 +104,114 @@ extension HomeVC: BaseVCProtocol {
 }
 
 // MARK: - Private Methods
+
+private extension HomeVC {
+    // Refreshes photos after fetching a new set of random photos
+    private func refreshPhotos() {
+        guard !isFetchingPhotos else { return }
+        isFetchingPhotos = true
+
+        unsplashService.fetchRandomPhotos { [weak self] photos in
+            DispatchQueue.main.async {
+                self?.isFetchingPhotos = false
+                guard let self = self, let photos = photos else {
+                    self?.refreshControl.endRefreshing()
+                    return
+                }
+                self.photos = photos
+                self.photoCollection.reloadData()
+                self.searchBar.text = ""
+                self.refreshControl.endRefreshing()
+                self.currentSearchQuery = nil
+                self.currentPage = 1
+            }
+        }
+    }
+
+    // Gets random photos and adds them to the photo array
+    private func fetchRandomPhotos() {
+        guard !isFetchingPhotos else { return }
+        isFetchingPhotos = true
+
+        unsplashService.fetchRandomPhotos { [weak self] photos in
+            DispatchQueue.main.async {
+                self?.isFetchingPhotos = false
+                guard let self = self, let photos = photos else { return }
+                self.photos.append(contentsOf: photos)
+                self.photoCollection.reloadData()
+            }
+        }
+    }
+
+    // Scrolls collection view to top (if it's not there)
+    private func scrollToTopIfNeeded() {
+        let topOffset = CGPoint(x: 0, y: -photoCollection.contentInset.top)
+        if photoCollection.contentOffset != topOffset {
+            photoCollection.setContentOffset(topOffset, animated: true)
+        }
+    }
+
+    // Setup gesture recognizers for the view (hiding keyboard by tapping the screen)
+    private func setupGestureRecognizers() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    // Search photos on query and update the collection
+    private func performSearch(with query: String) {
+        currentSearchQuery = query
+        currentPage = 1
+        photos.removeAll()
+
+        unsplashService.searchPhotos(query: query) { [weak self] photos in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+
+                if let photos = photos, !photos.isEmpty {
+                    self.photos = photos
+                    print("Found \(photos.count) photos")
+                } else {
+                    print("No photos found")
+                    self.searchBar.text = ""
+                    self.refreshPhotos()
+                    self.photos.removeAll()
+                }
+
+                self.photoCollection.reloadData()
+                self.photoCollection.setContentOffset(.zero, animated: true)
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension HomeVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
+        let photo = photos[indexPath.item]
+        cell.imageView.sd_setImage(with: URL(string: photo.urls.thumb), completed: nil)
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension HomeVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.item]
+        let detailVC = PhotoDetailsVC(photo: photo)
+        detailVC.modalPresentationStyle = .pageSheet
+        present(detailVC, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UICollectionViewCompositionalLayout
 
 private extension HomeVC {
     // Creates a compositional layout for the collection view
@@ -150,95 +250,6 @@ private extension HomeVC {
             return section
         }
     }
-
-    // Refreshes photos after fetching a new set of random photos
-    private func refreshPhotos() {
-        unsplashService.fetchRandomPhotos { [weak self] photos in
-            DispatchQueue.main.async {
-                guard let self = self, let photos = photos else {
-                    self?.refreshControl.endRefreshing()
-                    return
-                }
-                self.photos = photos
-                self.photoCollection.reloadData()
-                self.searchBar.text = ""
-                self.refreshControl.endRefreshing()
-                self.currentSearchQuery = nil
-                self.currentPage = 1
-            }
-        }
-    }
-
-    // Gets random photos and adds them to the photo array
-    private func fetchRandomPhotos() {
-        unsplashService.fetchRandomPhotos { [weak self] photos in
-            guard let self = self, let photos = photos else { return }
-            self.photos.append(contentsOf: photos)
-            self.photoCollection.reloadData()
-        }
-    }
-
-    // Scrolls collection view to top (if it's not there)
-    private func scrollToTopIfNeeded() {
-        let topOffset = CGPoint(x: 0, y: -photoCollection.contentInset.top)
-        if photoCollection.contentOffset != topOffset {
-            photoCollection.setContentOffset(topOffset, animated: true)
-        }
-    }
-
-    // Setup gesture recognizers for the view
-    private func setupGestureRecognizers() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    // Search photos on query and update the collection
-    private func performSearch(with query: String) {
-        currentSearchQuery = query
-        currentPage = 1
-        photos.removeAll()
-
-        unsplashService.searchPhotos(query: query) { [weak self] photos in
-            DispatchQueue.main.async {
-                guard let self = self, let photos = photos else {
-                    print("No photos found")
-                    return
-                }
-                self.photos = photos
-                print("Found \(photos.count) photos")
-                self.photoCollection.reloadData()
-
-                self.photoCollection.setContentOffset(.zero, animated: true)
-            }
-        }
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension HomeVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-        let photo = photos[indexPath.item]
-        cell.imageView.sd_setImage(with: URL(string: photo.urls.thumb), completed: nil)
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension HomeVC: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.item]
-        let detailVC = PhotoDetailsVC(photo: photo)
-        detailVC.modalPresentationStyle = .pageSheet
-        present(detailVC, animated: true, completion: nil)
-    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -273,6 +284,7 @@ extension HomeVC {
     }
 
     private func loadMoreSearchResults(for query: String) {
+        guard !isFetchingPhotos else { return }
         isFetchingPhotos = true
         currentPage += 1
 
