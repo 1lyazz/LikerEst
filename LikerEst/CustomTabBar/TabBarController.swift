@@ -61,8 +61,10 @@ final class TabBarController: UITabBarController {
     private func setupProperties() {
         tabBar.isHidden = true
         selectedIndex = 0
-        let controllers = CustomTabItem.allCases.map { $0.viewController }
+        
+        let controllers = CustomTabItem.allCases.map { UINavigationController(rootViewController: $0.viewController) }
         setViewControllers(controllers, animated: true)
+        
         setupTabBarAppearance()
     }
     

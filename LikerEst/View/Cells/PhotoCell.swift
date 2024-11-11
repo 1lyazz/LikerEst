@@ -10,13 +10,11 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 12
-        imageView.layer.masksToBounds = true
-        imageView.clipsToBounds = true
+        imageView.configureImage()
         return imageView
     }()
+
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,14 +27,6 @@ class PhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupView() {
-        contentView.addSubview(imageView)
-    }
-
-    private func makeConstraints() {
-        imageView.fillSuperView()
-    }
-
     func configure(with url: URL?) {
         guard let url = url else {
             imageView.image = UIImage(named: "errPhoto")
@@ -46,5 +36,17 @@ class PhotoCell: UICollectionViewCell {
         imageView.sd_setImage(with: url, placeholderImage: .placeholder) { [weak self] _, error, _, _ in
             if error != nil { self?.imageView.image = UIImage(named: "errPhoto") }
         }
+    }
+}
+
+// MARK: - Private Methods
+
+private extension PhotoCell {
+    private func setupView() {
+        contentView.addSubview(imageView)
+    }
+
+    private func makeConstraints() {
+        imageView.fillSuperView()
     }
 }

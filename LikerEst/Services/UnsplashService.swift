@@ -7,8 +7,8 @@
 
 import Alamofire
 
-class UnsplashService {
-    private let accessKey = "yP-tHfgaG3oSXXPlcOUApwXzTVFhszE8PZIenjePuzg"
+final class UnsplashService {
+    private let accessKey = "Plt_D4FXqtr2vUH-bHE-QmpvBi9gmssfu41wit0KoBw"
     private let baseURL = "https://api.unsplash.com"
     private let randomPhotosEndpoint = "/photos/random"
     private let searchPhotosEndpoint = "/search/photos"
@@ -25,8 +25,7 @@ class UnsplashService {
                 print("Fetched \(photos.count) random photos")
                 completion(photos)
             case .failure(let error):
-                self.handleError(response: response, error: error)
-                completion(nil)
+                self.handleError(response: response, error: error, completion: completion)
             }
         }
     }
@@ -42,14 +41,13 @@ class UnsplashService {
                 print("Search results: \(result.results.count)")
                 completion(result.results)
             case .failure(let error):
-                self.handleError(response: response, error: error)
-                completion(nil)
+                self.handleError(response: response, error: error, completion: completion)
             }
         }
     }
 
     // Handle error responses from Unsplash API
-    private func handleError<T: Decodable>(response: AFDataResponse<T>, error: AFError) {
+    private func handleError<T: Decodable>(response: AFDataResponse<T>, error: AFError, completion: @escaping ([Photo]?) -> Void) {
         if let data = response.data,
            let json = try? JSONSerialization.jsonObject(with: data, options: [])
         {
@@ -57,5 +55,6 @@ class UnsplashService {
         } else {
             print("Error: \(error.localizedDescription)")
         }
+        completion(nil)
     }
 }

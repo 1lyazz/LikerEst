@@ -81,6 +81,7 @@ final class CustomTabBar: UIStackView {
                 guard let self = self else { return }
                 self.favouritesItem.animateClick {
                     self.selectItem(index: self.favouritesItem.index)
+                    NotificationCenter.default.post(name: .favouritesTabTapped, object: nil)
                 }
             }
             .disposed(by: disposeBag)
@@ -96,4 +97,5 @@ final class CustomTabBar: UIStackView {
 
 extension Notification.Name {
     static let homeTabTapped = Notification.Name("homeTabTapped")
+    static let favouritesTabTapped = Notification.Name("favouritesTabTapped")
 }

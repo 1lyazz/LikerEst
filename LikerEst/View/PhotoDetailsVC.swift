@@ -11,6 +11,7 @@ import UIKit
 final class PhotoDetailsVC: UIViewController {
     private let photo: Photo
     private var isImageLoaded: Bool = false
+    weak var delegate: PhotoDetailsVCDelegate?
 
     // MARK: - UI Elements
 
@@ -93,11 +94,15 @@ final class PhotoDetailsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupView()
         makeConstraints()
         setupProperties()
         bind()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.photoDetailsVCDidDismiss()
     }
 }
 
@@ -159,9 +164,11 @@ extension PhotoDetailsVC: BaseVCProtocol {
             activityIndicator.startAnimating()
             loadImage()
         }
+
+        updateHeartButtonState()
     }
 
-    func bind() {
+    private func bind() {
         closeButton.addAction(UIAction(handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         }), for: .touchUpInside)
@@ -240,5 +247,22 @@ private extension PhotoDetailsVC {
         let isLiked = heartButton.tintColor == .red
         heartButton.setImage(UIImage(systemName: isLiked ? "heart" : "heart.fill"), for: .normal)
         heartButton.tintColor = isLiked ? .label : .red
+
+        if isLiked {
+            PhotoCoreDataService.shared.removePhoto(photo)
+        } else {
+            PhotoCoreDataService.shared.savePhoto(photo)
+        }
+    }
+
+    // Update heart state button by checking isPhotoLiked
+    private func updateHeartButtonState() {
+        if PhotoCoreDataService.shared.isPhotoLiked(photo) {
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            heartButton.tintColor = .red
+        } else {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            heartButton.tintColor = .label
+        }
     }
 }
