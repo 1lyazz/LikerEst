@@ -8,7 +8,7 @@
 import UIKit
 
 extension UILabel {
-    func configureWith(_ text: String?,
+    func configureWith(_ text: String? = "Meow",
                        color: UIColor,
                        alignment: NSTextAlignment = .left,
                        size: CGFloat,
