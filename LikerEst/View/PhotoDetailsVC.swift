@@ -64,17 +64,21 @@ final class PhotoDetailsVC: UIViewController {
         return button
     }()
 
-    private lazy var stackView: UIStackView = {
+    private lazy var downloadButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.down.circle"), for: .normal)
+        return button
+    }()
+
+    private lazy var centerStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [heartButton, infoButton])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 30
-        stackView.tintColor = .label
-        stackView.backgroundColor = .systemGray3
-        stackView.setupCornerRadius(22)
-        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.configureStackView(spacing: 30, layoutMargins: UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25))
+        return stackView
+    }()
+
+    private lazy var leftStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [downloadButton])
+        stackView.configureStackView()
         return stackView
     }()
 
@@ -110,7 +114,7 @@ final class PhotoDetailsVC: UIViewController {
 
 extension PhotoDetailsVC: BaseVCProtocol {
     func setupView() {
-        view.addSubviews(imageView, dateLabel, userNameLabel, locationLabel, stackView, closeButton, activityIndicator)
+        view.addSubviews(imageView, dateLabel, userNameLabel, locationLabel, centerStackView, closeButton, activityIndicator, leftStackView)
     }
 
     func makeConstraints() {
@@ -141,15 +145,21 @@ extension PhotoDetailsVC: BaseVCProtocol {
 
         imageView.anchor(top: locationLabel.bottomAnchor,
                          left: view.leftAnchor,
-                         bottom: stackView.topAnchor,
+                         bottom: centerStackView.topAnchor,
                          right: view.rightAnchor,
                          paddingTop: 10,
                          paddingBottom: 10)
 
-        stackView.anchor(bottom: view.bottomAnchor,
-                         paddingBottom: 34,
-                         height: 45)
-        stackView.centerX(inView: view)
+        centerStackView.anchor(bottom: view.bottomAnchor,
+                               paddingBottom: 34,
+                               height: 45)
+        centerStackView.centerX(inView: view)
+
+        leftStackView.anchor(left: view.leftAnchor,
+                             bottom: view.bottomAnchor,
+                             paddingLeft: 20,
+                             paddingBottom: 34,
+                             height: 45)
 
         activityIndicator.center(inView: view)
     }
@@ -167,7 +177,11 @@ extension PhotoDetailsVC: BaseVCProtocol {
 
         updateHeartButtonState()
     }
+}
 
+// MARK: - Private Methods
+
+private extension PhotoDetailsVC {
     private func bind() {
         closeButton.addAction(UIAction(handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)
@@ -175,7 +189,7 @@ extension PhotoDetailsVC: BaseVCProtocol {
 
         heartButton.addAction(UIAction(handler: { [weak self] _ in
             guard let self = self else { return }
-            toggleHeart()
+            self.toggleHeart()
         }), for: .touchUpInside)
 
         infoButton.addAction(UIAction(handler: { [weak self] _ in
@@ -183,12 +197,12 @@ extension PhotoDetailsVC: BaseVCProtocol {
             let alert = UIAlertController.createDetailsAlert(photo: self.photo)
             self.present(alert, animated: true, completion: nil)
         }), for: .touchUpInside)
+
+        downloadButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.downloadImage()
+        }), for: .touchUpInside)
     }
-}
 
-// MARK: - Private Methods
-
-private extension PhotoDetailsVC {
     // Asynс loads the image for the photo
     private func loadImage() {
         Task {
@@ -212,6 +226,28 @@ private extension PhotoDetailsVC {
             }
         } catch {
             print("Failed to load image: \(error)")
+        }
+    }
+
+    // Downloads photo to your iPhone
+    private func downloadImage() {
+        guard let url = URL(string: photo.urls.full) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                print("Failed to download image: \(String(describing: error))")
+                return
+            }
+
+            DispatchQueue.main.async {
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            }
+        }.resume()
+    }
+
+    @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController.createSaveImageAlert(error: error)
+            self.present(alert, animated: true)
         }
     }
 

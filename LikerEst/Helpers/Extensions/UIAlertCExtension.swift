@@ -24,4 +24,19 @@ extension UIAlertController {
 
         return alert
     }
+
+    static func createSaveImageAlert(error: Error?) -> UIAlertController {
+        let alert: UIAlertController
+        if let error = error {
+            alert = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+        } else {
+            alert = UIAlertController(title: "Saved", message: "\nYour image has been saved to your Photos", preferredStyle: .alert)
+        }
+
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        okAction.setValue(UIColor.label, forKey: "titleTextColor")
+        alert.addAction(okAction)
+
+        return alert
+    }
 }
