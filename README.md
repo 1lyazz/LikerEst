@@ -50,6 +50,7 @@ The app also provides detailed information about each photo, such as author, cre
 9. Collection building with [UICollectionViewCompositionalLayout](https://developer.apple.com/documentation/uikit/uicollectionviewcompositionallayout)
 10. Alamofire: A library for executing HTTP requests
 11. Unsplash API: A source of photos for the app
+12. Architecture: MVVM
 
 ## Screenshots <br>
 
