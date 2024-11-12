@@ -53,7 +53,7 @@ The app also provides detailed information about each photo, such as author, cre
 
 ## Screenshots <br>
 
-[Figma Link](https://www.figma.com/design/slhc2dB8nQ1X5xrxAsH9ll/My-Water?m=auto&t=yZXKrerwixY9cKaX-6)
+[Figma Link](https://www.figma.com/design/YhOljKl9VhEsPxyZkhmdaz/LikerEst?m=auto&t=q9vPZm2231KPwG6g-6)
 
 <p align="center">
   <img src="Screenshots/HomeSCR.png" width="280" />
