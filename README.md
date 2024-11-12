@@ -24,7 +24,7 @@ The app also provides detailed information about each photo, such as author, cre
     <br> <img src="Screenshots/LikerEstYT.png" alt="App Demo" width="600" />
   </a>
   
-  [YouTube link to App Demo](https://youtu.be/XWWipomukE4)
+  [YouTube link to App Demo](https://youtu.be/NRNVkqIOuM4)
 </div>
 
 ## Key Features <br>
