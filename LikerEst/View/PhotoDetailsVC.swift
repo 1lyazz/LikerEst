@@ -157,7 +157,7 @@ extension PhotoDetailsVC: BaseVCProtocol {
 
         leftStackView.anchor(left: view.leftAnchor,
                              bottom: view.bottomAnchor,
-                             paddingLeft: 20,
+                             paddingLeft: 40,
                              paddingBottom: 34,
                              height: 45)
 

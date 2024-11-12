@@ -16,6 +16,7 @@
 
 /* Begin PBXFileReference section */
 		08CFF84464AAB78D037C8DB0 /* Pods_LikerEst.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LikerEst.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A0DE6FD2CE2C32700FE1A7D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0AE77F552CDE03CA007C11D1 /* LikerEst.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LikerEst.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AE77F582CDE03CA007C11D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AE77F5A2CDE03CA007C11D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		0AE77F4C2CDE03CA007C11D1 = {
 			isa = PBXGroup;
 			children = (
+				0A0DE6FD2CE2C32700FE1A7D /* README.md */,
 				0AE77F572CDE03CA007C11D1 /* LikerEst */,
 				0AE77F562CDE03CA007C11D1 /* Products */,
 				ECAD6C3BD97465029C4433A6 /* Pods */,
