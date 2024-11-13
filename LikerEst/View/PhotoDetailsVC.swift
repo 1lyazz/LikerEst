@@ -5,6 +5,7 @@
 //  Created by Ilya Zablotski on 8.11.24.
 //
 
+import Photos
 import SDWebImage
 import Toast
 import UIKit
@@ -225,22 +226,51 @@ private extension PhotoDetailsVC {
 
     // Downloads photo to your iPhone
     private func downloadImage() {
-        guard let url = URL(string: photo.urls.full) else { return }
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil, let image = UIImage(data: data) else {
-                print("Failed to download image: \(String(describing: error))")
-                return
-            }
+        let status = PHPhotoLibrary.authorizationStatus()
 
-            DispatchQueue.main.async {
-                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        switch status {
+        case .authorized, .limited:
+            guard let url = URL(string: photo.urls.full) else { return }
+            URLSession.shared.dataTask(with: url) { data, _, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        self.view.makeToast("Failed to download image: \(error.localizedDescription)", duration: 3.0, position: .center)
+                    }
+                    return
+                }
+                guard let data = data, let image = UIImage(data: data) else {
+                    DispatchQueue.main.async {
+                        self.view.makeToast("Failed to process image data", duration: 3.0, position: .center)
+                    }
+                    return
+                }
+
+                DispatchQueue.main.async {
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                }
+            }.resume()
+        case .denied, .restricted:
+            UIAlertController.showAlertForPhotoAccess(presentingViewController: self)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { newStatus in
+                if newStatus == .authorized || newStatus == .limited {
+                    self.downloadImage()
+                } else {
+                    UIAlertController.showAlertForPhotoAccess(presentingViewController: self)
+                }
             }
-        }.resume()
+        @unknown default:
+            fatalError("Unknown authorization status")
+        }
     }
 
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         DispatchQueue.main.async {
-            self.view.makeToast("SAVED", duration: 3.0, position: .center)
+            if let error = error {
+                self.view.makeToast("Error saving photo: \(error.localizedDescription)", duration: 3.0, position: .center)
+            } else {
+                self.view.makeToast("SAVED", duration: 3.0, position: .center)
+            }
         }
     }
 

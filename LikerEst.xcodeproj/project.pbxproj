@@ -89,6 +89,7 @@
 			membershipExceptions = (
 				CoreDataManager.swift,
 				PhotoCoreDataService.swift,
+				Reachability.swift,
 				UnsplashService.swift,
 			);
 			target = 0AE77F542CDE03CA007C11D1 /* LikerEst */;

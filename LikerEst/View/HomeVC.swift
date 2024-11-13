@@ -112,6 +112,13 @@ private extension HomeVC {
         guard !isFetchingPhotos else { return }
         isFetchingPhotos = true
 
+        guard Reachability.isConnectedToNetwork() else {
+            isFetchingPhotos = false
+            view.makeToast("No internet connection", duration: 3.0, position: .center)
+            refreshControl.endRefreshing()
+            return
+        }
+
         unsplashService.fetchRandomPhotos { [weak self] photos in
             DispatchQueue.main.async {
                 self?.isFetchingPhotos = false
@@ -133,6 +140,12 @@ private extension HomeVC {
     private func fetchRandomPhotos() {
         guard !isFetchingPhotos else { return }
         isFetchingPhotos = true
+
+        guard Reachability.isConnectedToNetwork() else {
+            isFetchingPhotos = false
+            view.makeToast("No internet connection", duration: 3.0, position: .center)
+            return
+        }
 
         unsplashService.fetchRandomPhotos { [weak self] photos in
             DispatchQueue.main.async {
@@ -164,6 +177,11 @@ private extension HomeVC {
         currentSearchQuery = query
         currentPage = 1
         photos.removeAll()
+
+        guard Reachability.isConnectedToNetwork() else {
+            view.makeToast("No internet connection", duration: 3.0, position: .center)
+            return
+        }
 
         unsplashService.searchPhotos(query: query) { [weak self] photos in
             DispatchQueue.main.async {
@@ -303,4 +321,12 @@ extension HomeVC {
             }
         }
     }
+}
+
+private extension HomeVC {
+    // Refreshes photos after fetching a new set of random photos
+
+    // Gets random photos and adds them to the photo array
+
+    // Search photos on query and update the collection
 }
