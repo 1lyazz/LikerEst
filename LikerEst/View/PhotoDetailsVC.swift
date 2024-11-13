@@ -6,6 +6,7 @@
 //
 
 import SDWebImage
+import Toast
 import UIKit
 
 final class PhotoDetailsVC: UIViewController {
@@ -239,8 +240,7 @@ private extension PhotoDetailsVC {
 
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         DispatchQueue.main.async {
-            let alert = UIAlertController.createSaveImageAlert(error: error)
-            self.present(alert, animated: true)
+            self.view.makeToast("SAVED", duration: 3.0, position: .center)
         }
     }
 
