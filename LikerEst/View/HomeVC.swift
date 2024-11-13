@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import Toast
 import UIKit
 
 final class HomeVC: UIViewController {
@@ -173,6 +174,7 @@ private extension HomeVC {
                     print("Found \(photos.count) photos")
                 } else {
                     print("No photos found")
+                    self.view.makeToast("No photos found", duration: 3.0, position: .center)
                     self.searchBar.text = ""
                     self.refreshPhotos()
                     self.photos.removeAll()

@@ -100,7 +100,7 @@ private extension FavouritesVC {
         savedPhotos.remove(at: indexPath.row)
 
         savedPhotosTable.deleteRows(at: [indexPath], with: .automatic)
-        updateEmptyStateViewVisibility() // Обновление состояния представления после удаления
+        updateEmptyStateViewVisibility()
     }
 }
 

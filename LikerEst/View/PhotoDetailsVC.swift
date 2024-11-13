@@ -6,6 +6,7 @@
 //
 
 import SDWebImage
+import Toast
 import UIKit
 
 final class PhotoDetailsVC: UIViewController {
@@ -205,27 +206,20 @@ private extension PhotoDetailsVC {
 
     // Asynс loads the image for the photo
     private func loadImage() {
-        Task {
-            await loadImageAsync()
-        }
-    }
-
-    // Asynс fetches image data and updates the imageView
-    private func loadImageAsync() async {
         guard let url = URL(string: photo.urls.full) else { return }
-
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            if let image = UIImage(data: data) {
-                // Update UI on the main thread
-                await MainActor.run {
-                    self.imageView.image = image
-                    self.activityIndicator.stopAnimating()
-                    self.isImageLoaded = true
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                if let image = UIImage(data: data) {
+                    await MainActor.run {
+                        self.imageView.image = image
+                        self.activityIndicator.stopAnimating()
+                        self.isImageLoaded = true
+                    }
                 }
+            } catch {
+                print("Failed to load image: \(error)")
             }
-        } catch {
-            print("Failed to load image: \(error)")
         }
     }
 
@@ -246,8 +240,7 @@ private extension PhotoDetailsVC {
 
     @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         DispatchQueue.main.async {
-            let alert = UIAlertController.createSaveImageAlert(error: error)
-            self.present(alert, animated: true)
+            self.view.makeToast("SAVED", duration: 3.0, position: .center)
         }
     }
 
