@@ -37,6 +37,11 @@ class PhotoCell: UICollectionViewCell {
             if error != nil { self?.imageView.image = UIImage(named: "errPhoto") }
         }
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
 }
 
 // MARK: - Private Methods

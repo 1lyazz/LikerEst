@@ -38,6 +38,12 @@ final class SavedPhotoCell: UITableViewCell {
         thumbnailImage.sd_setImage(with: URL(string: photo.urls.thumb), completed: nil)
         authorName.text = photo.user.name
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImage.image = nil
+        authorName.text = ""
+    }
 }
 
 // MARK: - Private Methods
