@@ -48,9 +48,9 @@ The app also provides detailed information about each photo, such as author, cre
 7. [Photos](https://apps.apple.com/us/app/photos/id1584215428): For working with the device photo gallery
 8. [SDWebImage](https://github.com/SDWebImage/SDWebImage): A library for loading and caching images
 9. Collection building with [UICollectionViewCompositionalLayout](https://developer.apple.com/documentation/uikit/uicollectionviewcompositionallayout)
-10. Alamofire: A library for executing HTTP requests
-11. Unsplash API: A source of photos for the app
-12. Architecture: MVVM
+10. [Alamofire](https://github.com/Alamofire/Alamofire): A library for executing HTTP requests
+11. [Unsplash API](https://github.com/unsplash/unsplash-photopicker-ios): A source of photos for the app ([Unsplash Dev](https://unsplash.com/developers))
+12. Architecture: [MVVM](https://habr.com/ru/articles/808923/)
 
 ## Screenshots <br>
 
